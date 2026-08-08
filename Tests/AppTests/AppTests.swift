@@ -96,6 +96,24 @@ struct ConfigurationTests {
   }
 
   @Test
+  func mapsDocumentedEnvironmentVariableNames() throws {
+    let reader = ConfigReader(providers: [
+      EnvironmentVariablesProvider(environmentVariables: [
+        "DISCORD_APPLICATION_ID": "111111111111111111",
+        "DISCORD_BOT_TOKEN": "test-token",
+        "DISCORD_GUILD_IDS": "222222222222222222,333333333333333333",
+        "DISCORD_MESSAGE_CONTENT_INTENT_ENABLED": "true",
+      ])
+    ])
+
+    let configuration = try BirdBotConfiguration(reader: reader)
+
+    #expect(configuration.discord.applicationID.rawValue == "111111111111111111")
+    #expect(configuration.discord.guildIDs.count == 2)
+    #expect(configuration.discord.messageContentIntentEnabled)
+  }
+
+  @Test
   func missingTokenProducesActionableSecretSafeError() {
     let reader = ConfigReader(providers: [
       InMemoryProvider(values: [
