@@ -14,10 +14,10 @@ struct App {
       EnvironmentVariablesProvider(environmentFilePath: ".env", allowMissing: true),
       InMemoryProvider(values: [
         "discord.messageContentIntentEnabled": false,
-        "http.serverName": "BirdBot",
+        "http.serverName": "iBot",
       ]),
     ])
-    let configuration = try BirdBotConfiguration(reader: reader)
+    let configuration = try IBotConfiguration(reader: reader)
     let readiness = ServiceReadiness()
     let logger = makeLogger(reader: reader)
     let application = try await buildApplication(

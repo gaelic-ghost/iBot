@@ -5,7 +5,7 @@ import HummingbirdTesting
 import Logging
 import Testing
 
-@testable import BirdBot
+@testable import iBot
 
 private let reader = ConfigReader(providers: [
   InMemoryProvider(values: [
@@ -27,7 +27,7 @@ struct AppTests {
           ServiceStatusResponse.self,
           from: Data(response.body.readableBytesView)
         )
-        #expect(status == ServiceStatusResponse(service: "BirdBot", status: "healthy"))
+        #expect(status == ServiceStatusResponse(service: "iBot", status: "healthy"))
       }
     }
   }
@@ -44,7 +44,7 @@ struct AppTests {
           ServiceStatusResponse.self,
           from: Data(response.body.readableBytesView)
         )
-        #expect(status == ServiceStatusResponse(service: "BirdBot", status: "starting"))
+        #expect(status == ServiceStatusResponse(service: "iBot", status: "starting"))
       }
 
       await readiness.markReady()
@@ -55,19 +55,19 @@ struct AppTests {
           ServiceStatusResponse.self,
           from: Data(response.body.readableBytesView)
         )
-        #expect(status == ServiceStatusResponse(service: "BirdBot", status: "ready"))
+        #expect(status == ServiceStatusResponse(service: "iBot", status: "ready"))
       }
     }
   }
 
   @Test
   func pingCommandIsGuildOnlyAndHarmless() {
-    let command = BirdBotCommand.ping
+    let command = IBotCommand.ping
 
     #expect(command.registration.name == "ping")
     #expect(command.registration.dm_permission == false)
     #expect(command.registration.contexts == [.guild])
-    #expect(command.response == "BirdBot is awake and connected.")
+    #expect(command.response == "iBot is awake and connected.")
   }
 }
 
@@ -84,7 +84,7 @@ struct ConfigurationTests {
       ])
     ])
 
-    let configuration = try BirdBotConfiguration(reader: reader)
+    let configuration = try IBotConfiguration(reader: reader)
 
     #expect(configuration.discord.applicationID.rawValue == "111111111111111111")
     #expect(
@@ -106,7 +106,7 @@ struct ConfigurationTests {
       ])
     ])
 
-    let configuration = try BirdBotConfiguration(reader: reader)
+    let configuration = try IBotConfiguration(reader: reader)
 
     #expect(configuration.discord.applicationID.rawValue == "111111111111111111")
     #expect(configuration.discord.guildIDs.count == 2)
@@ -123,7 +123,7 @@ struct ConfigurationTests {
     ])
 
     #expect(throws: ConfigurationError.missingDiscordBotToken) {
-      try BirdBotConfiguration(reader: reader)
+      try IBotConfiguration(reader: reader)
     }
     #expect(
       ConfigurationError.missingDiscordBotToken.errorDescription
@@ -142,7 +142,7 @@ struct ConfigurationTests {
     ])
 
     #expect(throws: ConfigurationError.invalidDiscordGuildIDs(["not-a-server-id"])) {
-      try BirdBotConfiguration(reader: reader)
+      try IBotConfiguration(reader: reader)
     }
   }
 }

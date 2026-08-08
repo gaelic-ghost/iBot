@@ -1,6 +1,6 @@
 import DiscordBM
 
-enum BirdBotCommand: String, CaseIterable, Sendable {
+enum IBotCommand: String, CaseIterable, Sendable {
   case ping
 
   var registration: Payloads.ApplicationCommandCreate {
@@ -8,7 +8,7 @@ enum BirdBotCommand: String, CaseIterable, Sendable {
     case .ping:
       Payloads.ApplicationCommandCreate(
         name: self.rawValue,
-        description: "Check whether BirdBot is responding",
+        description: "Check whether iBot is responding",
         dm_permission: false,
         type: .chatInput,
         contexts: [.guild]
@@ -19,7 +19,7 @@ enum BirdBotCommand: String, CaseIterable, Sendable {
   var response: String {
     switch self {
     case .ping:
-      "BirdBot is awake and connected."
+      "iBot is awake and connected."
     }
   }
 }

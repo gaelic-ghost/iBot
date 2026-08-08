@@ -25,7 +25,7 @@ COPY . .
 
 # Build the application, with optimizations, with static linking, and using jemalloc
 RUN swift build -c release \
-    --product "BirdBot" \
+    --product "iBot" \
     --static-swift-stdlib \
     -Xlinker -ljemalloc
 
@@ -33,7 +33,7 @@ RUN swift build -c release \
 WORKDIR /staging
 
 # Copy main executable to staging area
-RUN cp "$(swift build --package-path /build -c release --show-bin-path)/BirdBot" ./
+RUN cp "$(swift build --package-path /build -c release --show-bin-path)/iBot" ./
 
 # Copy static swift backtracer binary to staging area
 RUN cp "/usr/libexec/swift/linux/swift-backtrace-static" ./
@@ -87,5 +87,5 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
     CMD curl --fail --silent --show-error http://127.0.0.1:8080/health > /dev/null || exit 1
 
 # Start the Hummingbird service when the image is run, default to listening on 8080 in production environment
-ENTRYPOINT ["./BirdBot"]
+ENTRYPOINT ["./iBot"]
 CMD ["--http-host", "0.0.0.0", "--http-port", "8080"]

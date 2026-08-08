@@ -2,7 +2,7 @@ import Configuration
 import DiscordBM
 import Foundation
 
-struct BirdBotConfiguration: Sendable {
+struct IBotConfiguration: Sendable {
   let discord: DiscordConfiguration
 
   init(reader: ConfigReader) throws {

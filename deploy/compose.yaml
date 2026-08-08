@@ -1,6 +1,6 @@
 services:
-  birdbot:
-    image: ghcr.io/gaelic-ghost/birdbot:${IMAGE_TAG:?Set IMAGE_TAG to an immutable published image tag}
+  ibot:
+    image: ghcr.io/gaelic-ghost/ibot:${IMAGE_TAG:?Set IMAGE_TAG to an immutable published image tag}
     restart: unless-stopped
     init: true
     read_only: true

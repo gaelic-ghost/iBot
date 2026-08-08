@@ -7,7 +7,7 @@ struct CommandRegistrar: Sendable {
   let logger: Logger
 
   func registerCommands() async throws {
-    let commands = BirdBotCommand.allCases.map(\.registration)
+    let commands = IBotCommand.allCases.map(\.registration)
     for guildID in self.guildIDs {
       let response = try await self.client.bulkSetGuildApplicationCommands(
         guildId: guildID,
@@ -15,7 +15,7 @@ struct CommandRegistrar: Sendable {
       )
       try response.guardSuccess()
       self.logger.info(
-        "Registered BirdBot's approved guild command set with Discord",
+        "Registered iBot's approved guild command set with Discord",
         metadata: ["guild-id": .string(guildID.rawValue)]
       )
     }

@@ -15,19 +15,19 @@ struct DiscordEventHandler: GatewayEventHandler {
       logger: self.logger
     ).registerCommands()
     await self.readiness.markReady()
-    self.logger.notice("BirdBot's Discord Gateway session is ready for approved guild traffic")
+    self.logger.notice("iBot's Discord Gateway session is ready for approved guild traffic")
   }
 
   func onResumed() async {
     await self.readiness.markReady()
     self.logger.notice(
-      "BirdBot resumed its Discord Gateway session after a connection interruption")
+      "iBot resumed its Discord Gateway session after a connection interruption")
   }
 
   func onInvalidSession(canResume: Bool) async {
     await self.readiness.markConnecting()
     self.logger.warning(
-      "Discord invalidated BirdBot's Gateway session; DiscordBM will reconnect using the supported session path",
+      "Discord invalidated iBot's Gateway session; DiscordBM will reconnect using the supported session path",
       metadata: ["can-resume": .stringConvertible(canResume)]
     )
   }
@@ -38,7 +38,7 @@ struct DiscordEventHandler: GatewayEventHandler {
       let guildID = interaction.guild_id,
       self.guildIDs.contains(guildID),
       let data = interaction.data,
-      let command = BirdBotCommand(rawValue: try data.requireApplicationCommand().name)
+      let command = IBotCommand(rawValue: try data.requireApplicationCommand().name)
     else {
       return
     }
@@ -56,7 +56,7 @@ struct DiscordEventHandler: GatewayEventHandler {
       return
     }
     self.logger.trace(
-      "Observed a message event in an approved guild; no moderation policy is configured, so BirdBot took no action",
+      "Observed a message event in an approved guild; no moderation policy is configured, so iBot took no action",
       metadata: [
         "channel-id": .string(message.channel_id.rawValue),
         "guild-id": .string(guildID.rawValue),

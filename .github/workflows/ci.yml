@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v6
       - name: Verify Swift formatting
         run: swift format lint --recursive --strict Package.swift Sources Tests
-      - name: Build and test BirdBot
+      - name: Build and test iBot
         run: swift test
 
   container:
@@ -37,4 +37,4 @@ jobs:
           context: .
           load: false
           push: false
-          tags: ghcr.io/gaelic-ghost/birdbot:ci
+          tags: ghcr.io/gaelic-ghost/ibot:ci
