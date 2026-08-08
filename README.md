@@ -1,6 +1,6 @@
-# BirdBot
+# iBot
 
-BirdBot is a server-side Swift Discord bot being built for two Apple-platform development communities. The bootstrap establishes a safe, observable Gateway process while the participating server administrators define the full command and moderation requirements.
+iBot is a server-side Swift Discord bot being built for two Apple-platform development communities. The bootstrap establishes a safe, observable Gateway process while the participating server administrators define the full command and moderation requirements.
 
 ## Current Behavior
 
