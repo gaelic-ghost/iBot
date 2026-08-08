@@ -4,10 +4,10 @@
 import PackageDescription
 
 let package = Package(
-  name: "BirdBot",
+  name: "iBot",
   platforms: [.macOS(.v15), .iOS(.v18), .tvOS(.v18)],
   products: [
-    .executable(name: "BirdBot", targets: ["BirdBot"])
+    .executable(name: "iBot", targets: ["iBot"])
   ],
   dependencies: [
     .package(url: "https://github.com/DiscordBM/DiscordBM.git", from: "1.16.2"),
@@ -19,7 +19,7 @@ let package = Package(
   ],
   targets: [
     .executableTarget(
-      name: "BirdBot",
+      name: "iBot",
       dependencies: [
         .product(name: "Configuration", package: "swift-configuration"),
         .product(name: "DiscordBM", package: "DiscordBM"),
@@ -29,9 +29,9 @@ let package = Package(
       path: "Sources/App"
     ),
     .testTarget(
-      name: "BirdBotTests",
+      name: "iBotTests",
       dependencies: [
-        .byName(name: "BirdBot"),
+        .byName(name: "iBot"),
         .product(name: "HummingbirdTesting", package: "hummingbird"),
       ],
       path: "Tests/AppTests"

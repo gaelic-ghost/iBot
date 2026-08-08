@@ -5,7 +5,7 @@ import Logging
 typealias AppRequestContext = BasicRequestContext
 
 func makeLogger(reader: ConfigReader) -> Logger {
-  var logger = Logger(label: "BirdBot")
+  var logger = Logger(label: "iBot")
   logger.logLevel = reader.string(forKey: "log.level", as: Logger.Level.self, default: .info)
   return logger
 }

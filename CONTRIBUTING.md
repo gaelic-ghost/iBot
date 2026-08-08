@@ -1,6 +1,6 @@
-# Contributing To BirdBot
+# Contributing To iBot
 
-BirdBot is being developed for two Apple-platform development communities. Product behavior—especially moderation, permissions, message retention, and third-party processing—must be agreed with the participating server administrators before implementation.
+iBot is being developed for two Apple-platform development communities. Product behavior—especially moderation, permissions, message retention, and third-party processing—must be agreed with the participating server administrators before implementation.
 
 ## Development
 

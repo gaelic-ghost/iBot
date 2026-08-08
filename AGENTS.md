@@ -1,14 +1,14 @@
-# BirdBot Repository Guidance
+# iBot Repository Guidance
 
-Use this file for durable repo-local guidance before changing BirdBot.
+Use this file for durable repo-local guidance before changing iBot.
 
 ## Service Shape
 
-- BirdBot is a Hummingbird 2 server-side Swift service created with the official `hb` CLI as a long-running Server application.
+- iBot is a Hummingbird 2 server-side Swift service created with the official `hb` CLI as a long-running Server application.
 - Keep Swift Package Manager as the source of truth for package structure, dependencies, builds, tests, and run commands.
 - Preserve Hummingbird's generated `swift-configuration` provider model. Do not add a parallel settings loader.
 - DiscordBM owns Discord Gateway and REST API behavior. Hummingbird owns the health and readiness HTTP surface.
-- BirdBot v1 intentionally has no database. Do not add Fluent, PostgreSQL, SQLite, or another persistence system until product requirements identify state that must survive process restarts and Gale approves the new operational surface.
+- iBot v1 intentionally has no database. Do not add Fluent, PostgreSQL, SQLite, or another persistence system until product requirements identify state that must survive process restarts and Gale approves the new operational surface.
 - Semantic similarity and model-backed moderation are deferred product and privacy decisions. Do not add model providers, embeddings, vector storage, or message-content transmission to third parties without Gale's explicit approval.
 
 ## Architecture
@@ -23,7 +23,7 @@ Use this file for durable repo-local guidance before changing BirdBot.
 
 - Runtime configuration flows through `swift-configuration` in this order: command-line arguments, environment variables, optional local `.env`, and safe in-memory defaults.
 - The Discord bot token is required for the production bot process and must never be committed, printed, embedded in an image, or included in an error.
-- Error and log messages must name the missing setting, where BirdBot expected it, and the likely fix without exposing secret values.
+- Error and log messages must name the missing setting, where iBot expected it, and the likely fix without exposing secret values.
 - Committed examples must contain placeholders only. Real deployment values belong in the deployment provider's secret store or an ignored local `.env` file.
 
 ## Discord Safety

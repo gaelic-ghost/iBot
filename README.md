@@ -17,7 +17,7 @@ Semantic similarity, model-backed moderation, persistent moderation history, and
 
 [Hummingbird](https://github.com/hummingbird-project/hummingbird) owns the HTTP health surface. [DiscordBM](https://github.com/DiscordBM/DiscordBM) owns typed Discord Gateway events, interactions, REST requests, reconnection behavior, and rate-limit handling. [Swift Service Lifecycle](https://github.com/swift-server/swift-service-lifecycle) starts and stops both services as one process. [Swift Configuration](https://github.com/apple/swift-configuration) supplies command-line, environment, optional `.env`, and safe default configuration.
 
-BirdBot intentionally has no database in its initial shape. Deterministic command and moderation behavior belongs outside the Discord transport layer so it can be tested without a live bot token.
+iBot intentionally has no database in its initial shape. Deterministic command and moderation behavior belongs outside the Discord transport layer so it can be tested without a live bot token.
 
 ## Requirements
 
@@ -44,7 +44,7 @@ cp .env.example .env
 | `HTTP_PORT` | No | HTTP port; defaults to `8080` |
 | `LOG_LEVEL` | No | Swift Log level; defaults to `info` |
 
-Enable the privileged Message Content intent in both BirdBot configuration and the Discord Developer Portal only after a feature genuinely needs message text.
+Enable the privileged Message Content intent in both iBot configuration and the Discord Developer Portal only after a feature genuinely needs message text.
 
 ## Develop And Validate
 
@@ -57,7 +57,7 @@ swift format lint --recursive --strict Package.swift Sources Tests
 Run the service only with a dedicated development bot and approved test guilds:
 
 ```sh
-swift run BirdBot
+swift run iBot
 ```
 
 The health responses are:
@@ -70,7 +70,7 @@ The health responses are:
 The generated multi-stage Dockerfile builds a release executable and runs it as a non-root user. Build it locally with:
 
 ```sh
-docker build --tag birdbot:local .
+docker build --tag ibot:local .
 ```
 
 `deploy/compose.yaml` is the production VM handoff. It expects a prebuilt immutable image in GitHub Container Registry and a host-managed `deploy/.env`; it does not compile Swift on the 1 GB VM. Image publishing and AWS Lightsail provisioning remain separate, approval-gated deployment work.
@@ -81,4 +81,8 @@ Tokens, private server configuration, and message content must never be committe
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). BirdBot does not have an open-source license yet; public visibility does not grant permission to redistribute or reuse the code until a license is selected.
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+iBot is available under the [Apache License 2.0](LICENSE).
